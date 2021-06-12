@@ -5,4 +5,7 @@ export default {
 	extra: {
 		API_KEY: process.env.API_KEY,
 	},
+	android: {
+		package: "com.sample.vaxscene",
+	},
 };
