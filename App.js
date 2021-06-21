@@ -26,10 +26,8 @@ function App() {
 			const recognizedText = await getData(data);
 			setText(recognizedText);
 			const items = findItem(recognizedText);
-			console.log(items);
 			setFound(items);
 		} catch (err) {
-			console.log(err);
 			setText("Error: Unable to Process");
 		}
 
@@ -43,7 +41,7 @@ function App() {
 			await recognizeTextFromImage(image.base64);
 		} catch (err) {
 			if (err.message !== "User cancelled image selection") {
-				console.error(err);
+				setText(null);
 			}
 		}
 	};
@@ -58,7 +56,7 @@ function App() {
 			await recognizeTextFromImage(image.base64);
 		} catch (err) {
 			if (err.message !== "User cancelled image selection") {
-				console.error(err);
+				setText(null);
 			}
 		}
 	};
