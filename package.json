@@ -10,6 +10,7 @@
     "axios": "^0.21.1",
     "dotenv": "^10.0.0",
     "expo": "~41.0.1",
+    "expo-clipboard": "~1.0.2",
     "expo-image-picker": "~10.1.4",
     "expo-splash-screen": "~0.10.2",
     "expo-status-bar": "~1.0.4",
