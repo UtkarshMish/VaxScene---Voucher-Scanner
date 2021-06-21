@@ -21,39 +21,60 @@ export default function Boxed({ voucher, purpose, payerName, price, expiry, numb
 			<CopyButton voucher={voucher} />
 			<View style={styles.container}>
 				{voucher && (
-					<View style={{ height: 70, width: DEFAULT_WIDTH - 70 }}>
+					<View style={styles.textContainer}>
 						<Text style={{ color: "black", fontSize: 20, marginRight: 50 }}>Voucher No:</Text>
 						<Text style={styles.title}>{voucher}</Text>
 					</View>
 				)}
-				{purpose && <Text style={styles.main}>purpose: {purpose}</Text>}
+				{purpose && (
+					<View style={styles.textContainer}>
+						<Text style={styles.main}>
+							purpose: <Text style={styles.title}>{purpose}</Text>
+						</Text>
+					</View>
+				)}
 				{payerName && (
-					<Text style={styles.main}>
-						Payer Name: <Text style={styles.title}></Text>
-						{payerName}
-					</Text>
+					<View style={styles.textContainer}>
+						<Text style={styles.main}>
+							Payer Name: <Text style={styles.title}>{payerName}</Text>
+						</Text>
+					</View>
 				)}
 				{price && (
-					<Text style={styles.main}>
-						price: <Text style={styles.title}>{price}</Text>
-					</Text>
+					<View style={styles.textContainer}>
+						<Text style={styles.main}>
+							price: <Text style={styles.title}>{price}</Text>
+						</Text>
+					</View>
 				)}
 				{expiry && (
-					<Text style={styles.main}>
-						expiry: <Text style={styles.title}>{expiry}</Text>
-					</Text>
+					<View style={styles.textContainer}>
+						<Text style={styles.main}>
+							expiry: <Text style={styles.title}>{expiry}</Text>
+						</Text>
+					</View>
 				)}
 				{number && (
-					<Text style={styles.main}>
-						number: <Text style={styles.title}>{number}</Text>
-					</Text>
+					<View style={styles.textContainer}>
+						<Text style={styles.main}>
+							number: <Text style={styles.title}>{number}</Text>
+						</Text>
+					</View>
 				)}
 			</View>
 		</View>
 	);
 }
 const styles = StyleSheet.create({
+	textContainer: {
+		flex: 1,
+		display: "flex",
+		flexWrap: "wrap",
+		flexDirection: "row",
+	},
 	container: {
+		flex: 1,
+		display: "flex",
 		justifyContent: "center",
 		alignSelf: "center",
 		textAlign: "center",
