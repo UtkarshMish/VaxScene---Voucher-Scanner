@@ -28,7 +28,6 @@ function App() {
 			const items = findItem(recognizedText);
 			setFound(items);
 		} catch (err) {
-			console.error(err);
 			setText("Error: Unable to Process");
 		}
 

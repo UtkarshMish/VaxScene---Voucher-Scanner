@@ -72,7 +72,6 @@ function findTollFree(elem = String()) {
 }
 export function findItem(text = String()) {
 	if (typeof text == "string" && text.length > 5) text = text.replaceAll(/\n/, "").trim();
-	console.log(text);
 	let matchedVoucher = text.match(/[a-z0-9]{35,36}/gim);
 	const purpose = findPurpose(text);
 	const payerName = findPayerName(text);
