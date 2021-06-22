@@ -19,26 +19,27 @@ function App() {
 		expiry: null,
 		number: null,
 	});
-	const recognizeTextFromImage = async (data) => {
+	const recognizeTextFromImage = async (data, OCREngine) => {
 		setIsLoading(true);
 
 		try {
-			const recognizedText = await getData(data);
+			const recognizedText = await getData(data, OCREngine);
 			setText(recognizedText);
 			const items = findItem(recognizedText);
 			setFound(items);
 		} catch (err) {
+			console.error(err);
 			setText("Error: Unable to Process");
 		}
 
 		setIsLoading(false);
 	};
 
-	const recognizeFromPicker = async (options) => {
+	const recognizeFromPicker = async (options, OCREngine) => {
 		try {
 			const image = await ImagePicker.launchImageLibraryAsync(options);
 			setImgSrc({ uri: image.uri });
-			await recognizeTextFromImage(image.base64);
+			await recognizeTextFromImage(image.base64, OCREngine);
 		} catch (err) {
 			if (err.message !== "User cancelled image selection") {
 				setText(null);
@@ -53,14 +54,14 @@ function App() {
 			}
 			const image = await ImagePicker.launchCameraAsync(options);
 			setImgSrc({ uri: image.uri });
-			await recognizeTextFromImage(image.base64);
+			await recognizeTextFromImage(image.base64, "2");
 		} catch (err) {
 			if (err.message !== "User cancelled image selection") {
 				setText(null);
 			}
 		}
 	};
-	const photoOptions = { base64: true, quality: 0.15, aspect: [1920, 1080] };
+	const photoOptions = { base64: true, quality: 0.2, aspect: [1000, 565] };
 	const { voucher, expiry, number, payerName, price, purpose } = found;
 	return (
 		<View style={styles.container}>
@@ -81,7 +82,7 @@ function App() {
 						disabled={isLoading}
 						title="Picker"
 						onPress={async () => {
-							await recognizeFromPicker(photoOptions);
+							await recognizeFromPicker(photoOptions, "2");
 						}}
 					/>
 				</View>

@@ -1,7 +1,9 @@
 import axios from "axios";
 import { Constants } from "react-native-unimodules";
-
-export async function getData(base64Image) {
+String.prototype.replaceAll = function replaceAll(search, replace) {
+	return this.split(search).join(replace);
+};
+export async function getData(base64Image, OCREngine = String("2")) {
 	const headerElem = new FormData();
 	headerElem.append("base64Image", "data:image/jpeg;base64," + base64Image);
 	headerElem.append("language", String("eng"));
@@ -10,7 +12,7 @@ export async function getData(base64Image) {
 	headerElem.append("isSearchablePdfHideTextLayer", String("false"));
 	headerElem.append("scale", String("false"));
 	headerElem.append("isTable", String("false"));
-	headerElem.append("OCREngine", String("2"));
+	headerElem.append("OCREngine", OCREngine);
 	const request = {
 		method: "POST",
 		url: String("https://api.ocr.space/parse/image"),
@@ -69,6 +71,8 @@ function findTollFree(elem = String()) {
 	return number;
 }
 export function findItem(text = String()) {
+	if (typeof text == "string" && text.length > 5) text = text.replaceAll(/\n/, "").trim();
+	console.log(text);
 	let matchedVoucher = text.match(/[a-z0-9]{35,36}/gim);
 	const purpose = findPurpose(text);
 	const payerName = findPayerName(text);

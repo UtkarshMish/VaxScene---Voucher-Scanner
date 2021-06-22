@@ -1,12 +1,12 @@
 {
-  "name": "vaxscene",
-  "displayName": "vaxscene",
-  "expo": {
-    "name": "vaxscene",
-    "slug": "vaxscene",
-    "version": "1.0.0",
-    "assetBundlePatterns": [
-      "**/*"
-    ]
-  }
+	"name": "vaxscene",
+	"displayName": "vaxscene",
+	"expo": {
+		"name": "vaxscene",
+		"slug": "vaxscene",
+		"version": "1.0.0",
+		"orientation": "portrait",
+		"permissions": ["CAMERA", "READ_EXTERNAL_STORAGE", "WRITE_EXTERNAL_STORAGE"],
+		"assetBundlePatterns": ["**/*"]
+	}
 }
